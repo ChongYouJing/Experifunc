@@ -1,0 +1,252 @@
+:root{
+    --nav-bg: light-dark(#ffffff40, #333333cc);
+    --nav-shadow: #222222;
+
+    --navul-bg1: light-dark(#dddddd, #303030);
+    --navul-bg2: light-dark(#cccccc, #444444);
+
+    --navul-label-gradient: 
+    linear-gradient(315deg,
+        var(--navul-bg2) 0%,
+        var(--navul-bg2) 1.5em,
+        var(--navul-bg1) 1.5em,
+        var(--navul-bg1) 100%);
+    
+    --navli-bg1: light-dark(#eeeeee, #222222);
+    --navli-bg2: light-dark(#e5e5e5, #1e1e1e);
+    --navli-hover-bg1: light-dark(#d7d7d7, #000000);
+    --navli-hover-bg2: light-dark(#e5e5e5, #111111);
+    --navli-gradient: 
+    linear-gradient(315deg,
+        var(--navli-bg2) 0%,
+        var(--navli-bg2) 1.5em,
+        var(--navli-bg1) 1.5em,
+        var(--navli-bg1) 100%);
+    --navli-gradient-hover: 
+    linear-gradient(315deg,
+        var(--navli-hover-bg2) 0%,
+        var(--navli-hover-bg2) 1.5em,
+        var(--navli-hover-bg1) 1.5em,
+        var(--navli-hover-bg1) 100%);
+    --navli-border: light-dark(#cccccc, #666666);
+
+
+
+    --tg-len: 50px;
+    --tg-handle-size: 20px;
+    --tg-handle-color: rgb(224, 217, 201);
+
+    --tg-off-text: "☾";
+    --tg-off-color: black;
+    --tg-handle-off-color: white;
+
+    --tg-on-text: "☀︎";
+    --tg-on-color: white;
+    --tg-handle-on-color: black;
+}
+
+
+/**
+_ __   __ ___   __
+| '_ \ / _` \ \ / /
+| | | | (_| |\ V / 
+|_| |_|\__,_| \_/  
+                
+*/
+#nav {
+    position: fixed;
+    width: 100%;
+    /* container-name: nav; */
+    /* container-type:normal; */
+    top: 0;
+    height: 0;
+    
+}
+
+/* -------
+nav-toggle
+------- */
+#nav-toggle {
+    display: none;
+}
+/* -------------
+nav-toggle-label
+------------- */
+#nav-toggle-label {
+    display: none;
+    text-align: center;
+    padding: 1em;
+    /* background-color: var(--navli-bg); */
+    background-image: var(--navul-label-gradient);
+
+    position: relative;
+    z-index: 10;
+}
+#nav-toggle-label:hover {
+    cursor: pointer;
+}
+#nav-toggle-label::before {
+    content: '☰';
+}
+#nav-toggle:checked + #nav-toggle-label::before {
+    content: '✕';
+}
+
+/* ---
+nav-ul
+--- */
+#nav-ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: safe center;
+
+    list-style-type: none;
+
+    padding: 0;
+    margin: 0;
+
+    background-color: var(--nav-bg);
+    backdrop-filter: blur(3px);
+    box-shadow: 1px 1px 5px 1px var(--nav-shadow);
+    
+    /* gap: 1em; */
+    
+    max-height: calc(100vh - 4rem);
+    overflow: auto;
+    transition: transform 150ms linear;
+    position: relative;
+}
+
+@media screen and (max-width: 500px) {
+    #nav-toggle-label {
+        display: block;
+    }
+    #nav-ul {
+        flex-direction: column;
+        justify-content: flex-start;
+        overflow: auto;
+        /* gap: 0; */
+        transform: translateY(-100%) scaleY(0);
+    }
+    #nav-toggle:checked + * + #nav-ul {
+        transform: translateY(0) scaleY(1) ;
+    }
+}
+
+/* why is container query so weird?????!?!??!? <nav> becomes height:0 */
+/* @container nav (width < 500px) {
+    #nav-ul {
+        flex-direction: column;
+        justify-content: flex-start;
+        overflow: auto;
+        gap: 0;
+    }
+}
+@container nav (height > 4px) {
+    #nav-ul {
+        background-color: blue;
+    }
+} */
+
+.nav-li {
+    /* background-color: var(--navli-bg); */
+    background-image: var(--navli-gradient);
+    border-bottom: 1px solid var(--navli-border);
+
+    margin: 0;
+    /* padding: 1em; */
+
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+
+    box-sizing: border-box;
+    position: relative;
+}
+.nav-li:hover {
+    background-image: var(--navli-gradient-hover);
+}
+.nav-li > * {
+    flex: 1 1;
+    text-align: center;
+    padding: 1em;
+    color: var(--text-color);
+}
+
+
+#nav-buffer {
+    height: 4rem;
+}
+
+
+/**
+  _   _                           _                    _      
+ | |_| |__   ___ _ __ ___   ___  | |_ ___   __ _  __ _| | ___ 
+ | __| '_ \ / _ \ '_ ` _ \ / _ \ | __/ _ \ / _` |/ _` | |/ _ \
+ | |_| | | |  __/ | | | | |  __/ | || (_) | (_| | (_| | |  __/
+  \__|_| |_|\___|_| |_| |_|\___|  \__\___/ \__, |\__, |_|\___|
+                                           |___/ |___/        
+*/
+
+
+#theme-toggler{
+    order: 66;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5em;
+    /* justify-self: flex-end; */
+    /* margin-left: auto; */
+}
+#theme-checkbox {
+    display: none;
+}
+#toggle-slider{
+    display: inline-block;
+    background-color: var(--tg-off-color);
+    width: var(--tg-len);
+    border-radius: 999px;
+    padding: 2px;
+    transition: all 150ms ease-in-out;
+    box-shadow:  0 0 5px 1px var(--tg-handle-off-color);
+    user-select: none;
+    height: var(--tg-handle-size);
+    cursor: pointer;
+}
+#theme-checkbox:checked + #toggle-slider{
+    background-color: var(--tg-on-color);
+    box-shadow:  0 0 5px 1px var(--tg-handle-on-color);
+
+}
+#toggle-slider::before{
+    display: inline-block;
+    position: absolute;
+    width: var(--tg-handle-size);
+    height: var(--tg-handle-size);
+    border-radius: 999px;
+    /* line-height: 1.35em; */
+    /* text-indent: -0.07em; */
+    font-size: var(--tg-handle-size);
+    /* text-indent: -0.2em; */
+    line-height: 1.0em;
+    align-content: center;
+    text-align: center;
+    
+    content: "🌚";
+    content: var(--tg-off-text);
+    color: var(--tg-off-color); 
+    background-color: var(--tg-handle-off-color);
+    transition: all 150ms ease-in-out;
+}
+#theme-checkbox:checked + #toggle-slider::before {
+    content: "🌞";
+    content: var(--tg-on-text);
+    color:var(--tg-on-color);
+    background-color: var(--tg-handle-on-color);
+    transform: translateX(calc(var(--tg-len) - var(--tg-handle-size)));
+}
+
+

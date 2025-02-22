@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="color-scheme" content="light dark">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <div id="flexcontainer" class="thetarget">
+            <div class="flexitem">1</div>
+            <div class="flexitem">2</div>
+            <div class="flexitem">3</div>
+            <div class="flexitem">4</div>
+            <div class="flexitem">5</div>
+            <div class="flexitem">6 </div>
+        </div>
+        
+        <script src="" async defer></script>
+    </body>
+    <style>
+        #flexcontainer{
+            display: flex;
+            border: 5px solid;
+            width: 250px;
+        }
+        .flexitem{
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+        }
+        .flexitem:nth-child(odd){
+            border: 5px inset rgb(166, 255, 65);
+        }
+        .flexitem:nth-child(even){
+            border: 5px inset rgb(140, 90, 255);
+        }
+    </style>
+    <script>
+        window.addEventListener('message', function(event) {
+            let flexcontainer = document.getElementsByClassName("thetarget")[0]
+            flexcontainer.setAttribute("style", event.data)
+        })
+
+    </script>
+</html>

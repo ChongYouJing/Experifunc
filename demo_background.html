@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="color-scheme" content="light dark">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div id="container" class="thetarget">
+            <span class="imagecaption">
+                A wise man once said:
+                OIIA I OIIIIA I,
+                ĪÓĪĪÀĪ ÓĪĪĪĪÀĪ,
+                O II A I O IIII A I
+
+            </span>
+        </div>        
+    </body>
+    <style>
+        #container{
+            min-width: 50px;
+            min-height: 50px;
+            max-width: 100%;
+            max-height: 100%;
+            width: min(250px, 100%);
+            height: min(150px, 100%);
+            box-sizing: border-box;
+            border: 5px dashed;
+            padding: 5px;
+            resize: both;
+            overflow: auto;
+
+            background-image: url("ethelcat.jpg");
+            /* background-size: 100px 100px; */
+            /* background-position: center; */
+            background-size: contain;
+            background-repeat: no-repeat;
+            
+        }
+        .imagecaption{
+            font-weight: bold;
+            background-color: #55555555;
+        }
+        html{
+            height: 100%;
+        }
+        body{
+            height: 100%;
+            box-sizing: border-box;
+            margin: 0;
+        }
+    </style>
+    <script>
+        window.addEventListener('message', function(event) {
+            let flexcontainer = document.getElementsByClassName("thetarget")[0]
+            let saveWidth = flexcontainer.style.width
+            let formatWidth = `width: ${saveWidth}; `
+            let saveHeight = flexcontainer.style.height
+            let formatHeight = `height: ${saveHeight}; `
+            let unsetCSS = saveWidth == "" || saveHeight == ""
+            let finalStyle = event.data + (!unsetCSS? formatWidth + formatHeight : "")
+            flexcontainer.setAttribute("style", finalStyle)
+        })
+    </script>
+</html>

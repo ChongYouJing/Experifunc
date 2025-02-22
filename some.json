@@ -1,0 +1,42 @@
+{
+    "element": "div",
+    "id": "main-content",
+    "children": [
+        {
+            "element": "h2",
+            "text": "HTML Basics"
+        },
+        {
+            "element": "div",
+            "class": "panelPair",
+            "children": [
+                {
+                    "element": "div",
+                    "class": "leftPanel",
+                    "text": [
+                        "<div> - creates a generic container for a block of text\n ddd",
+                        "<html> - Root element of an HTML document.",
+                        "<head> - Contains Metadata + links for the document",
+                        "<title>-  tab name idk",
+                        "<meta> - Meta data",
+                        "<body> - The visible content"
+                    ]
+                },
+                {
+                    "element": "div",
+                    "class": "rightPanel",
+                    "text": "I am right panel"
+                }
+            ]
+        },
+        {
+            "componentName": "rightPanel",
+            "children": [
+                {
+                    "tag": "div",
+                    "text": "I am a div"
+                }
+            ]
+        }
+    ]
+}

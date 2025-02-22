@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="color-scheme" content="light dark">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <div id="gridcontainer" class="thetarget">
+            <div class="griditem">1</div>
+            <div class="griditem">2</div>
+            <div class="griditem">3</div>
+            <div class="griditem">4</div>
+            <div class="griditem">5</div>
+            <div class="griditem">6</div>
+            <div class="griditem">7</div>
+            <div class="griditem">8</div>
+            <div class="griditem">9</div>
+        </div>
+        
+        <script src="" async defer></script>
+    </body>
+    <style>
+        #gridcontainer{
+            display: grid;
+            border: 5px solid;
+        }
+
+        /* .griditem{
+
+        } */
+    </style>
+    <script>
+        window.addEventListener('message', function(event) {
+            let flexcontainer = document.getElementsByClassName("thetarget")[0]
+            flexcontainer.setAttribute("style", event.data)
+        })
+
+    </script>
+</html>
